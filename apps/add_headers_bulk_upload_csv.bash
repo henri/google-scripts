@@ -36,11 +36,19 @@ if [ $? != 0 ] ; then
     exit -1
 fi
 
-mv -i "${temporary_file}" "${input_file}"
+# move the input file from being a temporary file to the output file (changing .tab to .csv)
+output_file=${input_file%.tab}.csv
+mv -i "${temporary_file}" "${output_file}"
 if [ $? != 0 ] ; then
     echo "ERROR! : Unable to rename the temporary file to be the same as the input file."
     exit -1
 fi
+
+
+
+echo "Done."
+echo "Remember - (1) After uploading to move the user(s) to the apprpriate orgonization."
+echo "         - (2) Add user(s) to approriate mailing list groups."
 
 exit 0 
 
